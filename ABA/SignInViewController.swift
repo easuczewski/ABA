@@ -15,7 +15,6 @@ class SignInViewController: UIViewController {
     // MARK: UI Outlets
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordButton: UIButton!
     
     // MARK: Alerts
     func alertForOutcome(outcome: Int) {

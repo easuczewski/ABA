@@ -28,7 +28,7 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    // MARK: TableViewDataSource & UITableViewDelegate
+    // MARK: Table View DataSource & Table View Delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentsForCurrentUser.count
     }
