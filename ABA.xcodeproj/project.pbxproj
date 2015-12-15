@@ -8,20 +8,107 @@
 
 /* Begin PBXBuildFile section */
 		020281CD1C207F81004726E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281CC1C207F81004726E1 /* AppDelegate.swift */; };
-		020281CF1C207F81004726E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281CE1C207F81004726E1 /* ViewController.swift */; };
 		020281D21C207F81004726E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020281D01C207F81004726E1 /* Main.storyboard */; };
 		020281D41C207F81004726E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020281D31C207F81004726E1 /* Assets.xcassets */; };
 		020281D71C207F81004726E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020281D51C207F81004726E1 /* LaunchScreen.storyboard */; };
+		020281E01C207FB2004726E1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281DF1C207FB2004726E1 /* User.swift */; };
+		020281E21C207FC3004726E1 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281E11C207FC3004726E1 /* Student.swift */; };
+		020281E41C207FCE004726E1 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281E31C207FCE004726E1 /* Program.swift */; };
+		020281E61C207FDA004726E1 /* ProgramSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281E51C207FDA004726E1 /* ProgramSession.swift */; };
+		020281E81C207FE7004726E1 /* ProgramDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281E71C207FE7004726E1 /* ProgramDataPoint.swift */; };
+		020281EA1C208000004726E1 /* ProgramShortTermObjective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281E91C208000004726E1 /* ProgramShortTermObjective.swift */; };
+		020281EC1C20800D004726E1 /* ProgramTactic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281EB1C20800D004726E1 /* ProgramTactic.swift */; };
+		020281EE1C208019004726E1 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281ED1C208019004726E1 /* Behavior.swift */; };
+		020281F01C2080D4004726E1 /* BehaviorDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281EF1C2080D4004726E1 /* BehaviorDataPoint.swift */; };
+		020281F31C2082B2004726E1 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281F21C2082B2004726E1 /* DateHelpers.swift */; };
+		020281F51C2082E3004726E1 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281F41C2082E3004726E1 /* FirebaseController.swift */; };
+		020281F71C2082ED004726E1 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281F61C2082ED004726E1 /* ImageController.swift */; };
+		020281F91C2082F7004726E1 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281F81C2082F7004726E1 /* UserController.swift */; };
+		020281FB1C208304004726E1 /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281FA1C208304004726E1 /* StudentController.swift */; };
+		020281FD1C208322004726E1 /* ProgramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281FC1C208322004726E1 /* ProgramController.swift */; };
+		020281FF1C20832F004726E1 /* ProgramSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020281FE1C20832F004726E1 /* ProgramSessionController.swift */; };
+		020282011C208340004726E1 /* ProgramDataPointController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282001C208340004726E1 /* ProgramDataPointController.swift */; };
+		020282031C208353004726E1 /* ProgramShortTermObjectiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282021C208353004726E1 /* ProgramShortTermObjectiveController.swift */; };
+		020282051C208371004726E1 /* ProgramTacticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282041C208371004726E1 /* ProgramTacticController.swift */; };
+		020282071C20837E004726E1 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282061C20837E004726E1 /* BehaviorController.swift */; };
+		020282091C20838E004726E1 /* BehaviorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282081C20838E004726E1 /* BehaviorDataController.swift */; };
+		0202820C1C2083B9004726E1 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820B1C2083B9004726E1 /* LogInViewController.swift */; };
+		0202820E1C2083C8004726E1 /* SelectStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */; };
+		020282101C2083D7004726E1 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */; };
+		020282121C2083E3004726E1 /* ProgramDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282111C2083E3004726E1 /* ProgramDetailViewController.swift */; };
+		020282141C2083F7004726E1 /* WorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282131C2083F7004726E1 /* WorkspaceViewController.swift */; };
+		020282161C208403004726E1 /* SelectDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282151C208403004726E1 /* SelectDataViewController.swift */; };
+		020282181C208530004726E1 /* BehaviorObjectiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282171C208530004726E1 /* BehaviorObjectiveController.swift */; };
+		0202821A1C208540004726E1 /* BehaviorTacticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282191C208540004726E1 /* BehaviorTacticController.swift */; };
+		0202821C1C20854C004726E1 /* BehaviorObjective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202821B1C20854C004726E1 /* BehaviorObjective.swift */; };
+		0202821E1C208556004726E1 /* BehaviorTactic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202821D1C208556004726E1 /* BehaviorTactic.swift */; };
+		020282221C2086B7004726E1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020282201C2086A1004726E1 /* Firebase.framework */; };
+		020282231C2086B7004726E1 /* Firebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 020282201C2086A1004726E1 /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		020282261C2086C5004726E1 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 020282251C2086C5004726E1 /* libicucore.tbd */; };
+		020282281C2086CC004726E1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 020282271C2086CC004726E1 /* libc++.tbd */; };
+		0202822A1C2086D9004726E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020282291C2086D9004726E1 /* SystemConfiguration.framework */; };
+		0202822C1C2086DF004726E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822B1C2086DF004726E1 /* Security.framework */; };
+		0202822E1C2086E4004726E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822D1C2086E4004726E1 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		020282241C2086B7004726E1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				020282231C2086B7004726E1 /* Firebase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		020281C91C207F81004726E1 /* ABA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		020281CC1C207F81004726E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		020281CE1C207F81004726E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		020281D11C207F81004726E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		020281D31C207F81004726E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		020281D61C207F81004726E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		020281D81C207F81004726E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020281DF1C207FB2004726E1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		020281E11C207FC3004726E1 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		020281E31C207FCE004726E1 /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
+		020281E51C207FDA004726E1 /* ProgramSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramSession.swift; sourceTree = "<group>"; };
+		020281E71C207FE7004726E1 /* ProgramDataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramDataPoint.swift; sourceTree = "<group>"; };
+		020281E91C208000004726E1 /* ProgramShortTermObjective.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramShortTermObjective.swift; sourceTree = "<group>"; };
+		020281EB1C20800D004726E1 /* ProgramTactic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTactic.swift; sourceTree = "<group>"; };
+		020281ED1C208019004726E1 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		020281EF1C2080D4004726E1 /* BehaviorDataPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorDataPoint.swift; sourceTree = "<group>"; };
+		020281F21C2082B2004726E1 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		020281F41C2082E3004726E1 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		020281F61C2082ED004726E1 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		020281F81C2082F7004726E1 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		020281FA1C208304004726E1 /* StudentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
+		020281FC1C208322004726E1 /* ProgramController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramController.swift; sourceTree = "<group>"; };
+		020281FE1C20832F004726E1 /* ProgramSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramSessionController.swift; sourceTree = "<group>"; };
+		020282001C208340004726E1 /* ProgramDataPointController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramDataPointController.swift; sourceTree = "<group>"; };
+		020282021C208353004726E1 /* ProgramShortTermObjectiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramShortTermObjectiveController.swift; sourceTree = "<group>"; };
+		020282041C208371004726E1 /* ProgramTacticController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTacticController.swift; sourceTree = "<group>"; };
+		020282061C20837E004726E1 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
+		020282081C20838E004726E1 /* BehaviorDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorDataController.swift; sourceTree = "<group>"; };
+		0202820B1C2083B9004726E1 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentViewController.swift; sourceTree = "<group>"; };
+		0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
+		020282111C2083E3004726E1 /* ProgramDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramDetailViewController.swift; sourceTree = "<group>"; };
+		020282131C2083F7004726E1 /* WorkspaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceViewController.swift; sourceTree = "<group>"; };
+		020282151C208403004726E1 /* SelectDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDataViewController.swift; sourceTree = "<group>"; };
+		020282171C208530004726E1 /* BehaviorObjectiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorObjectiveController.swift; sourceTree = "<group>"; };
+		020282191C208540004726E1 /* BehaviorTacticController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorTacticController.swift; sourceTree = "<group>"; };
+		0202821B1C20854C004726E1 /* BehaviorObjective.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorObjective.swift; sourceTree = "<group>"; };
+		0202821D1C208556004726E1 /* BehaviorTactic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorTactic.swift; sourceTree = "<group>"; };
+		020282201C2086A1004726E1 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		020282251C2086C5004726E1 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		020282271C2086CC004726E1 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		020282291C2086D9004726E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0202822B1C2086DF004726E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0202822D1C2086E4004726E1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +116,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0202822E1C2086E4004726E1 /* CFNetwork.framework in Frameworks */,
+				0202822C1C2086DF004726E1 /* Security.framework in Frameworks */,
+				0202822A1C2086D9004726E1 /* SystemConfiguration.framework in Frameworks */,
+				020282281C2086CC004726E1 /* libc++.tbd in Frameworks */,
+				020282261C2086C5004726E1 /* libicucore.tbd in Frameworks */,
+				020282221C2086B7004726E1 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,13 +148,81 @@
 			isa = PBXGroup;
 			children = (
 				020281CC1C207F81004726E1 /* AppDelegate.swift */,
-				020281CE1C207F81004726E1 /* ViewController.swift */,
-				020281D01C207F81004726E1 /* Main.storyboard */,
 				020281D31C207F81004726E1 /* Assets.xcassets */,
+				020281DE1C207FA2004726E1 /* Model */,
+				020281F11C208299004726E1 /* Controller */,
+				0202820A1C208396004726E1 /* View */,
+				0202821F1C208645004726E1 /* FirebaseFrameworks */,
 				020281D51C207F81004726E1 /* LaunchScreen.storyboard */,
 				020281D81C207F81004726E1 /* Info.plist */,
 			);
 			path = ABA;
+			sourceTree = "<group>";
+		};
+		020281DE1C207FA2004726E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				020281DF1C207FB2004726E1 /* User.swift */,
+				020281E11C207FC3004726E1 /* Student.swift */,
+				020281E31C207FCE004726E1 /* Program.swift */,
+				020281E51C207FDA004726E1 /* ProgramSession.swift */,
+				020281E71C207FE7004726E1 /* ProgramDataPoint.swift */,
+				020281E91C208000004726E1 /* ProgramShortTermObjective.swift */,
+				020281EB1C20800D004726E1 /* ProgramTactic.swift */,
+				020281ED1C208019004726E1 /* Behavior.swift */,
+				020281EF1C2080D4004726E1 /* BehaviorDataPoint.swift */,
+				0202821B1C20854C004726E1 /* BehaviorObjective.swift */,
+				0202821D1C208556004726E1 /* BehaviorTactic.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		020281F11C208299004726E1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				020281F21C2082B2004726E1 /* DateHelpers.swift */,
+				020281F41C2082E3004726E1 /* FirebaseController.swift */,
+				020281F61C2082ED004726E1 /* ImageController.swift */,
+				020281F81C2082F7004726E1 /* UserController.swift */,
+				020281FA1C208304004726E1 /* StudentController.swift */,
+				020281FC1C208322004726E1 /* ProgramController.swift */,
+				020281FE1C20832F004726E1 /* ProgramSessionController.swift */,
+				020282001C208340004726E1 /* ProgramDataPointController.swift */,
+				020282021C208353004726E1 /* ProgramShortTermObjectiveController.swift */,
+				020282041C208371004726E1 /* ProgramTacticController.swift */,
+				020282061C20837E004726E1 /* BehaviorController.swift */,
+				020282081C20838E004726E1 /* BehaviorDataController.swift */,
+				020282171C208530004726E1 /* BehaviorObjectiveController.swift */,
+				020282191C208540004726E1 /* BehaviorTacticController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0202820A1C208396004726E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				020281D01C207F81004726E1 /* Main.storyboard */,
+				0202820B1C2083B9004726E1 /* LogInViewController.swift */,
+				0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */,
+				0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */,
+				020282111C2083E3004726E1 /* ProgramDetailViewController.swift */,
+				020282131C2083F7004726E1 /* WorkspaceViewController.swift */,
+				020282151C208403004726E1 /* SelectDataViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0202821F1C208645004726E1 /* FirebaseFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0202822D1C2086E4004726E1 /* CFNetwork.framework */,
+				0202822B1C2086DF004726E1 /* Security.framework */,
+				020282291C2086D9004726E1 /* SystemConfiguration.framework */,
+				020282271C2086CC004726E1 /* libc++.tbd */,
+				020282251C2086C5004726E1 /* libicucore.tbd */,
+				020282201C2086A1004726E1 /* Firebase.framework */,
+			);
+			name = FirebaseFrameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +235,7 @@
 				020281C51C207F81004726E1 /* Sources */,
 				020281C61C207F81004726E1 /* Frameworks */,
 				020281C71C207F81004726E1 /* Resources */,
+				020282241C2086B7004726E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,8 +298,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				020281CF1C207F81004726E1 /* ViewController.swift in Sources */,
+				020282091C20838E004726E1 /* BehaviorDataController.swift in Sources */,
+				020281E41C207FCE004726E1 /* Program.swift in Sources */,
+				020282141C2083F7004726E1 /* WorkspaceViewController.swift in Sources */,
+				020281FF1C20832F004726E1 /* ProgramSessionController.swift in Sources */,
+				020281EE1C208019004726E1 /* Behavior.swift in Sources */,
+				020281E61C207FDA004726E1 /* ProgramSession.swift in Sources */,
+				020281F01C2080D4004726E1 /* BehaviorDataPoint.swift in Sources */,
+				020281FD1C208322004726E1 /* ProgramController.swift in Sources */,
+				0202820E1C2083C8004726E1 /* SelectStudentViewController.swift in Sources */,
+				020281E81C207FE7004726E1 /* ProgramDataPoint.swift in Sources */,
+				020282071C20837E004726E1 /* BehaviorController.swift in Sources */,
+				020281F31C2082B2004726E1 /* DateHelpers.swift in Sources */,
+				020282181C208530004726E1 /* BehaviorObjectiveController.swift in Sources */,
+				020281F71C2082ED004726E1 /* ImageController.swift in Sources */,
 				020281CD1C207F81004726E1 /* AppDelegate.swift in Sources */,
+				020281EA1C208000004726E1 /* ProgramShortTermObjective.swift in Sources */,
+				0202821E1C208556004726E1 /* BehaviorTactic.swift in Sources */,
+				020282101C2083D7004726E1 /* StudentDetailViewController.swift in Sources */,
+				020282011C208340004726E1 /* ProgramDataPointController.swift in Sources */,
+				020281E01C207FB2004726E1 /* User.swift in Sources */,
+				020282121C2083E3004726E1 /* ProgramDetailViewController.swift in Sources */,
+				020282161C208403004726E1 /* SelectDataViewController.swift in Sources */,
+				020281EC1C20800D004726E1 /* ProgramTactic.swift in Sources */,
+				020282031C208353004726E1 /* ProgramShortTermObjectiveController.swift in Sources */,
+				0202821A1C208540004726E1 /* BehaviorTacticController.swift in Sources */,
+				020281F91C2082F7004726E1 /* UserController.swift in Sources */,
+				020281FB1C208304004726E1 /* StudentController.swift in Sources */,
+				0202820C1C2083B9004726E1 /* LogInViewController.swift in Sources */,
+				020281E21C207FC3004726E1 /* Student.swift in Sources */,
+				0202821C1C20854C004726E1 /* BehaviorObjective.swift in Sources */,
+				020281F51C2082E3004726E1 /* FirebaseController.swift in Sources */,
+				020282051C208371004726E1 /* ProgramTacticController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +442,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ABA",
+				);
 				INFOPLIST_FILE = ABA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardsuczewski.ABA;
@@ -261,6 +457,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ABA",
+				);
 				INFOPLIST_FILE = ABA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardsuczewski.ABA;
