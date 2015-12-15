@@ -15,16 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        if let tabBarController = self.window?.rootViewController as? UITabBarController {
-            tabBarController.selectedIndex = 1
-        }
-        if UserController.sharedController.currentUser == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let rootVC = storyboard.instantiateViewControllerWithIdentifier("LogInViewController")
-            if let window = window {
-                window.rootViewController = rootVC
-            }
-        }
+//        if let tabBarController = self.window?.rootViewController as? UITabBarController {
+//            tabBarController.selectedIndex = 1
+//        }
+//        if UserController.sharedController.currentUser == nil {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let rootVC = storyboard.instantiateViewControllerWithIdentifier("LogInViewController")
+//            if let window = window {
+//                window.rootViewController = rootVC
+//            }
+//        }
         return true
     }
 

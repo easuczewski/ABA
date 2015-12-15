@@ -32,7 +32,6 @@
 		020282051C208371004726E1 /* ProgramTacticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282041C208371004726E1 /* ProgramTacticController.swift */; };
 		020282071C20837E004726E1 /* BehaviorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282061C20837E004726E1 /* BehaviorController.swift */; };
 		020282091C20838E004726E1 /* BehaviorDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282081C20838E004726E1 /* BehaviorDataController.swift */; };
-		0202820C1C2083B9004726E1 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820B1C2083B9004726E1 /* LogInViewController.swift */; };
 		0202820E1C2083C8004726E1 /* SelectStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */; };
 		020282101C2083D7004726E1 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */; };
 		020282121C2083E3004726E1 /* ProgramDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020282111C2083E3004726E1 /* ProgramDetailViewController.swift */; };
@@ -49,6 +48,7 @@
 		0202822A1C2086D9004726E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020282291C2086D9004726E1 /* SystemConfiguration.framework */; };
 		0202822C1C2086DF004726E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822B1C2086DF004726E1 /* Security.framework */; };
 		0202822E1C2086E4004726E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822D1C2086E4004726E1 /* CFNetwork.framework */; };
+		020282301C208C16004726E1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202822F1C208C16004726E1 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,7 +93,6 @@
 		020282041C208371004726E1 /* ProgramTacticController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramTacticController.swift; sourceTree = "<group>"; };
 		020282061C20837E004726E1 /* BehaviorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorController.swift; sourceTree = "<group>"; };
 		020282081C20838E004726E1 /* BehaviorDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorDataController.swift; sourceTree = "<group>"; };
-		0202820B1C2083B9004726E1 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStudentViewController.swift; sourceTree = "<group>"; };
 		0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
 		020282111C2083E3004726E1 /* ProgramDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramDetailViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		020282291C2086D9004726E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0202822B1C2086DF004726E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0202822D1C2086E4004726E1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0202822F1C208C16004726E1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				020281D01C207F81004726E1 /* Main.storyboard */,
-				0202820B1C2083B9004726E1 /* LogInViewController.swift */,
+				0202822F1C208C16004726E1 /* SignInViewController.swift */,
 				0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */,
 				0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */,
 				020282111C2083E3004726E1 /* ProgramDetailViewController.swift */,
@@ -309,6 +309,7 @@
 				0202820E1C2083C8004726E1 /* SelectStudentViewController.swift in Sources */,
 				020281E81C207FE7004726E1 /* ProgramDataPoint.swift in Sources */,
 				020282071C20837E004726E1 /* BehaviorController.swift in Sources */,
+				020282301C208C16004726E1 /* SignInViewController.swift in Sources */,
 				020281F31C2082B2004726E1 /* DateHelpers.swift in Sources */,
 				020282181C208530004726E1 /* BehaviorObjectiveController.swift in Sources */,
 				020281F71C2082ED004726E1 /* ImageController.swift in Sources */,
@@ -325,7 +326,6 @@
 				0202821A1C208540004726E1 /* BehaviorTacticController.swift in Sources */,
 				020281F91C2082F7004726E1 /* UserController.swift in Sources */,
 				020281FB1C208304004726E1 /* StudentController.swift in Sources */,
-				0202820C1C2083B9004726E1 /* LogInViewController.swift in Sources */,
 				020281E21C207FC3004726E1 /* Student.swift in Sources */,
 				0202821C1C20854C004726E1 /* BehaviorObjective.swift in Sources */,
 				020281F51C2082E3004726E1 /* FirebaseController.swift in Sources */,

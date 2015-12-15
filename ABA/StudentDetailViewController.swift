@@ -10,6 +10,8 @@ import UIKit
 
 class StudentDetailViewController: UIViewController {
 
+    var selectedStudent: Student?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
