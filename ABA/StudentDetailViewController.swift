@@ -12,8 +12,8 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
 
     // MARK: Properties
     var selectedStudent: Student?
-    var programsForSelectedStudent: [Program] = []
-    var behaviorsForSelectedStudent: [Behavior] = []
+    var programsForSelectedStudent: [Program] = [Program(studentIdentifier: "a", name: "Arithmetic", domain: "Math", antecedent: "a", longTermObjective: "a"), Program(studentIdentifier: "b", name: "Bottle Opening", domain: "OT", antecedent: "b", longTermObjective: "b"), Program(studentIdentifier: "c", name: "Counting", domain: "Math", antecedent: "c", longTermObjective: "c"), Program(studentIdentifier: "d", name: "Directions (verbal)", domain: "Communication", antecedent: "d", longTermObjective: "d"), Program(studentIdentifier: "e", name: "Estimating Money", domain: "Math", antecedent: "e", longTermObjective: "e"), Program(studentIdentifier: "f", name: "Fingerpainting", domain: "OT", antecedent: "f", longTermObjective: "f"), Program(studentIdentifier: "g", name: "Grip Pencil", domain: "OT", antecedent: "g", longTermObjective: "g"), Program(studentIdentifier: "h", name: "Handling Coins", domain: "OT", antecedent: "h", longTermObjective: "h")]
+    var behaviorsForSelectedStudent: [Behavior] = [Behavior(studentIdentifier: "s", name: "Scripting", abbreviation: "s", description: "s", withTime: "s"), Behavior(studentIdentifier: "c", name: "Crying", abbreviation: "c", description: "c", withTime: "c"), Behavior(studentIdentifier: "b", name: "Biting", abbreviation: "b", description: "b", withTime: "b"), Behavior(studentIdentifier: "e", name: "Eating Penicl Erasers", abbreviation: "e", description: "e", withTime: "e")]
     var mode: Int {
         get {
             return modeSegmentedControl.selectedSegmentIndex
