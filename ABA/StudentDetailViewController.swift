@@ -166,6 +166,11 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
+        if mode == 0 {
+            self.performSegueWithIdentifier("addProgram", sender: nil)
+        } else if mode == 1 {
+            self.performSegueWithIdentifier("addBehavior", sender: nil)
+        }
     }
     
     // MARK: UISearchBarDelegate
@@ -244,5 +249,6 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
         return cell
     }
-    
+
+
 }

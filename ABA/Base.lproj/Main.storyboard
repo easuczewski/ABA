@@ -308,7 +308,7 @@
             </objects>
             <point key="canvasLocation" x="-532" y="2257"/>
         </scene>
-        <!--Student Details-->
+        <!--Student-->
         <scene sceneID="0NW-JF-TJY">
             <objects>
                 <viewController id="PXj-Ua-10a" customClass="StudentDetailViewController" customModule="ABA" customModuleProvider="target" sceneMemberID="viewController">
@@ -372,6 +372,9 @@
                                                             <constraint firstAttribute="width" secondItem="RF9-rW-igK" secondAttribute="height" multiplier="1:1" id="ujI-Vz-pbB"/>
                                                         </constraints>
                                                         <state key="normal" image="Plus"/>
+                                                        <connections>
+                                                            <action selector="addButtonTapped:" destination="PXj-Ua-10a" eventType="touchUpInside" id="QNp-Rh-rBz"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <animations/>
@@ -385,6 +388,11 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <searchBar contentMode="redraw" placeholder="Search for a program name or domain" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-fv-HaS">
+                                <rect key="frame" x="10" y="192" width="580" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="spX-sW-ZGs">
                                 <rect key="frame" x="10" y="236" width="580" height="315"/>
                                 <animations/>
@@ -424,11 +432,6 @@
                                     <outlet property="delegate" destination="PXj-Ua-10a" id="o41-Hp-T4z"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Search for a program name or domain" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-fv-HaS">
-                                <rect key="frame" x="10" y="192" width="580" height="44"/>
-                                <animations/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -445,7 +448,7 @@
                             <constraint firstItem="Cio-L4-gU2" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="ncR-aG-I1O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Student Details" id="uTG-wh-M9d">
+                    <navigationItem key="navigationItem" title="Student" id="uTG-wh-M9d">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="zsV-tk-Pbc">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="PXj-Ua-10a" id="dpa-Kk-9Va"/>
@@ -460,6 +463,8 @@
                         <outlet property="searchDisplayController" destination="blt-Ln-nDL" id="su5-3H-stu"/>
                         <outlet property="studentNameTextField" destination="ryd-Dz-spc" id="KYY-P7-8kx"/>
                         <outlet property="tableView" destination="spX-sW-ZGs" id="1H5-NF-w7P"/>
+                        <segue destination="YII-1M-9q3" kind="show" identifier="addProgram" id="jmW-5E-rJx"/>
+                        <segue destination="6J6-SR-jAt" kind="show" identifier="addBehavior" id="Iqq-m0-ABM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxM-ON-1JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -474,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="-532" y="3050"/>
         </scene>
-        <!--View Controller-->
+        <!--Program-->
         <scene sceneID="k4o-pN-91A">
             <objects>
-                <viewController id="YII-1M-9q3" sceneMemberID="viewController">
+                <viewController id="YII-1M-9q3" customClass="ProgramDetailViewController" customModule="ABA" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W2V-ql-PdH"/>
                         <viewControllerLayoutGuide type="bottom" id="4ga-cE-DPe"/>
@@ -485,13 +490,63 @@
                     <view key="view" contentMode="scaleToFill" id="LHw-Cd-uRX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SY5-ZG-zig">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SH3-cR-JsX">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SH3-cR-JsX" id="ryA-FV-gfh">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SY5-ZG-zig" firstAttribute="top" secondItem="W2V-ql-PdH" secondAttribute="bottom" constant="-64" id="0HX-lk-tgS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SY5-ZG-zig" secondAttribute="trailing" constant="-20" id="0WM-TX-c4E"/>
+                            <constraint firstItem="4ga-cE-DPe" firstAttribute="top" secondItem="SY5-ZG-zig" secondAttribute="bottom" id="7a7-pA-7gV"/>
+                            <constraint firstItem="SY5-ZG-zig" firstAttribute="leading" secondItem="LHw-Cd-uRX" secondAttribute="leadingMargin" constant="-20" id="puI-yv-aD8"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Program" id="SZi-nh-yXP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="PU0-mC-Mf9"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19r-tL-XNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="3745"/>
+            <point key="canvasLocation" x="-867" y="3771"/>
+        </scene>
+        <!--Behavior-->
+        <scene sceneID="iH6-xE-5L2">
+            <objects>
+                <viewController id="6J6-SR-jAt" customClass="BehaviorDetailViewController" customModule="ABA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G4J-E6-SZy"/>
+                        <viewControllerLayoutGuide type="bottom" id="eiz-a1-Z7N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y3a-IX-3YJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Behavior" id="zgN-7T-oCx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KMo-K0-tRL"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sV-DZ-KeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="3771"/>
         </scene>
     </scenes>
     <resources>

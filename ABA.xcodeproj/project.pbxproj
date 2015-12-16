@@ -49,6 +49,7 @@
 		0202822C1C2086DF004726E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822B1C2086DF004726E1 /* Security.framework */; };
 		0202822E1C2086E4004726E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822D1C2086E4004726E1 /* CFNetwork.framework */; };
 		020282301C208C16004726E1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202822F1C208C16004726E1 /* SignInViewController.swift */; };
+		02D34FC11C212B6F00D2EA4F /* BehaviorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,6 +110,7 @@
 		0202822B1C2086DF004726E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0202822D1C2086E4004726E1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0202822F1C208C16004726E1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */,
 				0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */,
 				020282111C2083E3004726E1 /* ProgramDetailViewController.swift */,
+				02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */,
 				020282131C2083F7004726E1 /* WorkspaceViewController.swift */,
 				020282151C208403004726E1 /* SelectDataViewController.swift */,
 			);
@@ -304,6 +307,7 @@
 				020281FF1C20832F004726E1 /* ProgramSessionController.swift in Sources */,
 				020281EE1C208019004726E1 /* Behavior.swift in Sources */,
 				020281E61C207FDA004726E1 /* ProgramSession.swift in Sources */,
+				02D34FC11C212B6F00D2EA4F /* BehaviorDetailViewController.swift in Sources */,
 				020281F01C2080D4004726E1 /* BehaviorDataPoint.swift in Sources */,
 				020281FD1C208322004726E1 /* ProgramController.swift in Sources */,
 				0202820E1C2083C8004726E1 /* SelectStudentViewController.swift in Sources */,
@@ -487,6 +491,7 @@
 				020281DD1C207F81004726E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
