@@ -20,11 +20,11 @@ struct Student: Equatable, FirebaseType {
     var userIdentifier: String
     var name: String
     var imageEndpoint: String?
-    var parentEmail: String
+    var parentEmail: String?
     var identifier: String?
     
     // MARK: Initializer
-    init(userIdentifier: String, name: String, parentEmail: String, imageEndpoint: String?, identifier: String? = nil) {
+    init(userIdentifier: String, name: String, parentEmail: String?, imageEndpoint: String?, identifier: String? = nil) {
         self.userIdentifier = userIdentifier
         self.name = name
         self.parentEmail = parentEmail
@@ -38,7 +38,10 @@ struct Student: Equatable, FirebaseType {
     }
     
     var jsonValue: [String: AnyObject] {
-        var json: [String: AnyObject] = [kUserIdentifier: userIdentifier, kName: name, kParentEmail: parentEmail]
+        var json: [String: AnyObject] = [kUserIdentifier: userIdentifier, kName: name]
+        if let parentEmail = parentEmail {
+            json.updateValue(parentEmail, forKey: kParentEmail)
+        }
         if let imageEndpoint = imageEndpoint {
             json.updateValue(imageEndpoint, forKey: kImageEndpoint)
         }
@@ -47,13 +50,14 @@ struct Student: Equatable, FirebaseType {
     
     init?(json: [String : AnyObject], identifier: String) {
         guard let userIdentifier = json[kUserIdentifier] as? String,
-            let name = json[kName] as? String,
-            let parentEmail = json[kParentEmail] as? String else {
+            let name = json[kName] as? String else {
                 return nil
         }
         self.userIdentifier = userIdentifier
         self.name = name
-        self.parentEmail = parentEmail
+        if let parentEmail = json[kParentEmail] as? String {
+            self.parentEmail = parentEmail
+        }
         if let imageEndpoint = json[kImageEndpoint] as? String {
             self.imageEndpoint = imageEndpoint
         }
@@ -64,5 +68,5 @@ struct Student: Equatable, FirebaseType {
 
 // MARK: Equatable
 func ==(lhs: Student, rhs: Student) -> Bool {
-    return (lhs.userIdentifier == rhs.userIdentifier) && (lhs.name == rhs.name) && (lhs.parentEmail == rhs.parentEmail) && (lhs.identifier == rhs.identifier)
+    return (lhs.userIdentifier == rhs.userIdentifier) && (lhs.name == rhs.name) && (lhs.identifier == rhs.identifier)
 }

@@ -313,7 +313,7 @@
             </objects>
             <point key="canvasLocation" x="-532" y="2257"/>
         </scene>
-        <!--Add Student-->
+        <!--Student Details-->
         <scene sceneID="0NW-JF-TJY">
             <objects>
                 <viewController id="PXj-Ua-10a" customClass="StudentDetailViewController" customModule="ABA" customModuleProvider="target" sceneMemberID="viewController">
@@ -342,6 +342,9 @@
                                                 <integer key="value" value="55"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addPhotoButtonTapped:" destination="PXj-Ua-10a" eventType="touchUpInside" id="NOs-vT-zyJ"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DYM-rW-1xA" userLabel="Student Text Stack">
                                         <rect key="frame" x="118" y="0.0" width="462" height="110"/>
@@ -349,7 +352,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="student name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-Dz-spc">
                                                 <rect key="frame" x="0.0" y="0.0" width="462" height="31.5"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="parent e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-tU-TRn">
@@ -452,14 +455,16 @@
                             <constraint firstItem="Cio-L4-gU2" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="ncR-aG-I1O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Student" id="uTG-wh-M9d">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SqB-cB-AKk"/>
+                    <navigationItem key="navigationItem" title="Student Details" id="uTG-wh-M9d">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="D24-uU-KIo"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageButton" destination="j5c-DO-lUt" id="jyq-6l-XuU"/>
                         <outlet property="modeSegmentedControl" destination="qdo-MY-AaM" id="Sya-0K-JXK"/>
+                        <outlet property="parentEmailTextField" destination="qvn-tU-TRn" id="m1H-ch-EAW"/>
                         <outlet property="searchBar" destination="oCM-fv-HaS" id="GxM-mD-x6h"/>
                         <outlet property="searchDisplayController" destination="blt-Ln-nDL" id="su5-3H-stu"/>
+                        <outlet property="studentNameTextField" destination="ryd-Dz-spc" id="KYY-P7-8kx"/>
                         <outlet property="tableView" destination="spX-sW-ZGs" id="1H5-NF-w7P"/>
                     </connections>
                 </viewController>
@@ -473,7 +478,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-532" y="2956"/>
+            <point key="canvasLocation" x="-532" y="3050"/>
         </scene>
     </scenes>
     <resources>
@@ -484,6 +489,6 @@
         <image name="Workspace" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lN5-3t-Ecl"/>
+        <segue reference="uEc-fU-sRl"/>
     </inferredMetricsTieBreakers>
 </document>

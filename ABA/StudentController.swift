@@ -16,25 +16,11 @@ class StudentController {
     
     // MARK: Methods
     //Create
-    static func createStudentWithName(name: String, parentEmail: String, image: UIImage?, userIdentifier: String, completion: (student: Student?) -> Void) {
-        var imageEndpoint: String = ""
-        if let image = image {
-            ImageController.uploadImage(image, completion: { (identifier) -> Void in
-                if let identifier = identifier {
-                    imageEndpoint = identifier
-                }
-            })
-        }
+    static func createStudentWithName(name: String, userIdentifier: String, completion: (student: Student?) -> Void) {
         if let userIdentifier = UserController.sharedController.currentUser?.identifier {
-            if imageEndpoint == "" {
-                var student = Student(userIdentifier: userIdentifier, name: name, parentEmail: parentEmail, imageEndpoint: nil)
+            var student = Student(userIdentifier: userIdentifier, name: name, parentEmail: nil, imageEndpoint: nil)
                 student.save()
                 completion(student: student)
-            } else {
-                var student = Student(userIdentifier: userIdentifier, name: name, parentEmail: parentEmail, imageEndpoint: imageEndpoint)
-                student.save()
-                completion(student: student)
-            }
         } else {
             completion(student: nil)
         }
@@ -70,7 +56,7 @@ class StudentController {
     }
     
     //Update
-    static func updateStudent(student: Student, name: String, parentEmail: String, completion: (student: Student?) -> Void) {
+    static func updateStudent(student: Student, name: String, parentEmail: String?, completion: (student: Student?) -> Void) {
         if let identifier = student.identifier {
             var updatedStudent = Student(userIdentifier: student.userIdentifier, name: name, parentEmail: parentEmail, imageEndpoint: student.imageEndpoint, identifier: identifier)
             updatedStudent.save()

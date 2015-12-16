@@ -16,16 +16,36 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: UIOutlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: View Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: Alerts
+    func confirmDeleteAlertForStudent(student: Student, indexPath: NSIndexPath) {
+        let alert = UIAlertController(title: "Delete \(student.name)?", message: "Are you sure you want to permanently delete \(student.name) and all of this student's program data?", preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { (_) -> Void in
+            student.delete()
+            self.studentsForCurrentUser.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Methods
+    func checkForUpdates() {
         if let user = UserController.sharedController.currentUser {
             StudentController.studentsForUser(user, completion: { (students) -> Void in
                 if let students = students {
                     self.studentsForCurrentUser = students
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
                 }
             })
         }
+    }
+    
+    // MARK: View Life Cycle
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        checkForUpdates()
     }
     
     // MARK: TableView Data Source & TableView Delegate
@@ -52,14 +72,22 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
         return 70
     }
     
-    // MARK: - Navigation
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "Delete",
+            handler: { (action: UITableViewRowAction!, indexPath: NSIndexPath!) in
+                self.confirmDeleteAlertForStudent(self.studentsForCurrentUser[indexPath.row], indexPath: indexPath)
+        })
+        deleteAction.backgroundColor = UIColor.redColor()
+        return [deleteAction]
+    }
     
+    // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "editStudent" {
             if let studentDetailViewController = segue.destinationViewController as? StudentDetailViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
                     studentDetailViewController.selectedStudent = self.studentsForCurrentUser[indexPath.row]
+                    studentDetailViewController.isAdding = false
                 }
             }
         }

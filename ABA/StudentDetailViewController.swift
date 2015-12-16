@@ -10,7 +10,7 @@ import UIKit
 
 class StudentDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
-// MARK: Properties
+    // MARK: Properties
     var selectedStudent: Student?
     var programsForSelectedStudent: [Program] = [Program(studentIdentifier: "A", name: "Archaeology", domain: "Ancient History", antecedent: "A", longTermObjective: "A"), Program(studentIdentifier: "B", name: "Biology", domain: "Biological Sciences", antecedent: "B", longTermObjective: "B"), Program(studentIdentifier: "C", name: "Chaucer", domain: "Classic Lit", antecedent: "C", longTermObjective: "C")]
     var behaviorsForSelectedStudent: [Behavior] = [Behavior(studentIdentifier: "A", name: "Anger", abbreviation: "A", description: "A", withTime: "A"), Behavior(studentIdentifier: "B", name: "Biting", abbreviation: "B", description: "B", withTime: "B"), Behavior(studentIdentifier: "C", name: "Crying", abbreviation: "C", description: "C", withTime: "C")]
@@ -18,28 +18,100 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         get {
             return modeSegmentedControl.selectedSegmentIndex
         }
-        set { }
     }
     var filteredPrograms: [Program] = []
     var filteredBehaviors: [Behavior] = []
     var isFiltered: Bool = false
+    var isAdding: Bool = true
     
-// MARK: UI Outlets
-    
+    // MARK: UI Outlets
     @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var studentNameTextField: UITextField!
+    @IBOutlet weak var parentEmailTextField: UITextField!
+    @IBOutlet weak var imageButton: UIButton!
     
-// MARK: View Life Cycle
+    
+    // MARK: Alerts
+    func addStudentAlert() {
+        let alert = UIAlertController(title: "Add New Student", message: "Let's get started by giving your new student a name.", preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "student name"
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (_) -> Void in
+            guard let textFields = alert.textFields else {
+                return
+            }
+            if let userIdentifier = UserController.sharedController.currentUser?.identifier {
+                if let name = textFields[0].text {
+                    if name != "" {
+                        StudentController.createStudentWithName(name, userIdentifier: userIdentifier, completion: { (student) -> Void in
+                            if let student = student {
+                                self.selectedStudent = student
+                            }
+                        })
+                    }
+                }
+            }
+            self.checkForUpdates()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (_) -> Void in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Methods
+    func checkForUpdates() {
+        if let student = self.selectedStudent {
+            self.studentNameTextField.text = student.name
+            if let parentEmail = student.parentEmail {
+                self.parentEmailTextField.text = parentEmail
+            }
+            if let imageEndpoint = student.imageEndpoint {
+                self.imageButton.titleLabel?.text = ""
+                ImageController.imageForIdentifier(imageEndpoint, completion: { (image) -> Void in
+                    self.imageButton.imageView?.image = image
+                })
+            }
+            ProgramController.programsForStudent(student, completion: { (programs) -> Void in
+                if let programs = programs {
+                    self.programsForSelectedStudent = programs
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
+                }
+            })
+            BehaviorController.behaviorsForStudent(student, completion: { (behaviors) -> Void in
+                if let behaviors = behaviors {
+                    self.behaviorsForSelectedStudent = behaviors
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
+                }
+            })
+        }
+    }
+    
+
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        
+        if isAdding {
+            addStudentAlert()
+        }
     }
-
-
-// MARK: UI Actions
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.checkForUpdates()
+    }
+    
+    
+
+    // MARK: UI Actions
     @IBAction func modeChanged(sender: UISegmentedControl) {
         tableView.reloadData()
         if mode == 0 {
@@ -48,6 +120,11 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
             searchBar.placeholder = "Search for a behavior"
         }
     }
+    
+    @IBAction func addPhotoButtonTapped(sender: UIButton) {
+        
+    }
+    
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
@@ -60,8 +137,7 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
     
-    
-// MARK: TableView Data Source & TableView Delegate
+    // MARK: TableView Data Source & TableView Delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltered == false {
             if mode == 0 {
@@ -76,7 +152,6 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
                 return filteredBehaviors.count
             }
         }
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -101,18 +176,4 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
