@@ -368,6 +368,9 @@
                                                             <segment title="Programs"/>
                                                             <segment title="Behaviors"/>
                                                         </segments>
+                                                        <connections>
+                                                            <action selector="modeChanged:" destination="PXj-Ua-10a" eventType="valueChanged" id="mDU-gO-v0K"/>
+                                                        </connections>
                                                     </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF9-rW-igK">
                                                         <rect key="frame" x="430.5" y="0.0" width="31.5" height="31.5"/>
@@ -389,38 +392,62 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <searchBar contentMode="redraw" placeholder="Search for a program name or domain" translatesAutoresizingMaskIntoConstraints="NO" id="oCM-fv-HaS">
+                                <rect key="frame" x="10" y="192" width="580" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="spX-sW-ZGs">
-                                <rect key="frame" x="10" y="192" width="580" height="359"/>
+                                <rect key="frame" x="10" y="236" width="580" height="315"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search by program title or domain" id="qE4-mH-aUt">
-                                    <rect key="frame" x="0.0" y="0.0" width="580" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <animations/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="programCell" id="8rR-FP-Tdr">
-                                        <rect key="frame" x="0.0" y="72" width="580" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="programBehaviorCell" textLabel="MUf-d5-eiH" detailTextLabel="kxr-1i-cbY" style="IBUITableViewCellStyleValue1" id="8rR-FP-Tdr">
+                                        <rect key="frame" x="0.0" y="28" width="580" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8rR-FP-Tdr" id="NT3-Sy-sj0">
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MUf-d5-eiH">
+                                                    <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kxr-1i-cbY">
+                                                    <rect key="frame" x="523.5" y="12" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PXj-Ua-10a" id="79J-hk-YTA"/>
+                                    <outlet property="delegate" destination="PXj-Ua-10a" id="o41-Hp-T4z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oCM-fv-HaS" firstAttribute="top" secondItem="Cio-L4-gU2" secondAttribute="bottom" constant="8" id="7qc-5S-Kpk"/>
                             <constraint firstItem="ubz-n3-PbS" firstAttribute="top" secondItem="spX-sW-ZGs" secondAttribute="bottom" id="EiZ-PQ-pa7"/>
-                            <constraint firstItem="spX-sW-ZGs" firstAttribute="top" secondItem="Cio-L4-gU2" secondAttribute="bottom" constant="8" id="JD6-cI-Doz"/>
+                            <constraint firstItem="spX-sW-ZGs" firstAttribute="top" secondItem="oCM-fv-HaS" secondAttribute="bottom" id="MEh-8O-JlD"/>
+                            <constraint firstItem="oCM-fv-HaS" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="UmE-tP-nCU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cio-L4-gU2" secondAttribute="trailing" constant="-10" id="aHa-6K-hkI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="spX-sW-ZGs" secondAttribute="trailing" constant="-10" id="aUd-QO-v5X"/>
                             <constraint firstItem="Cio-L4-gU2" firstAttribute="top" secondItem="PLV-aI-R0p" secondAttribute="bottom" constant="10" id="bGt-Du-iFa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oCM-fv-HaS" secondAttribute="trailing" constant="-10" id="gio-Zo-0L7"/>
                             <constraint firstItem="spX-sW-ZGs" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="hTk-KA-NTJ"/>
                             <constraint firstItem="Cio-L4-gU2" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="ncR-aG-I1O"/>
                         </constraints>
@@ -431,11 +458,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="modeSegmentedControl" destination="qdo-MY-AaM" id="Sya-0K-JXK"/>
+                        <outlet property="searchBar" destination="oCM-fv-HaS" id="GxM-mD-x6h"/>
+                        <outlet property="searchDisplayController" destination="blt-Ln-nDL" id="su5-3H-stu"/>
+                        <outlet property="tableView" destination="spX-sW-ZGs" id="1H5-NF-w7P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxM-ON-1JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="blt-Ln-nDL">
+                    <connections>
+                        <outlet property="delegate" destination="PXj-Ua-10a" id="HAf-6V-nef"/>
+                        <outlet property="searchContentsController" destination="PXj-Ua-10a" id="kPA-mX-OgJ"/>
+                        <outlet property="searchResultsDataSource" destination="PXj-Ua-10a" id="hUO-Pf-NVz"/>
+                        <outlet property="searchResultsDelegate" destination="PXj-Ua-10a" id="JXz-ic-UP9"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-798" y="2984"/>
+            <point key="canvasLocation" x="-532" y="2956"/>
         </scene>
     </scenes>
     <resources>

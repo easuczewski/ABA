@@ -28,7 +28,7 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    // MARK: Table View DataSource & Table View Delegate
+    // MARK: TableView Data Source & TableView Delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentsForCurrentUser.count
     }
@@ -55,6 +55,7 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "editStudent" {
             if let studentDetailViewController = segue.destinationViewController as? StudentDetailViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
