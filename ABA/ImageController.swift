@@ -31,6 +31,11 @@ class ImageController {
             }
         }
     }
+    
+    static func deleteImageWithIdentifier(identifier: String) {
+        let endpointBase = FirebaseController.base.childByAppendingPath("images").childByAppendingPath(identifier)
+        endpointBase.removeValue()
+    }
 }
 
 extension UIImage {

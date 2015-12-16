@@ -20,7 +20,7 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
     func confirmDeleteAlertForStudent(student: Student, indexPath: NSIndexPath) {
         let alert = UIAlertController(title: "Delete \(student.name)?", message: "Are you sure you want to permanently delete \(student.name) and all of this student's program data?", preferredStyle: .ActionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { (_) -> Void in
-            student.delete()
+            StudentController.deleteStudent(student)
             self.studentsForCurrentUser.removeAtIndex(indexPath.row)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }))
@@ -58,15 +58,9 @@ class SelectStudentViewController: UIViewController, UITableViewDataSource, UITa
             forIndexPath: indexPath)
         let student = studentsForCurrentUser[indexPath.row]
         cell.textLabel?.text = student.name
-        if let imageEndpoint = student.imageEndpoint {
-            ImageController.imageForIdentifier(imageEndpoint, completion: { (image) -> Void in
-                if let image = image {
-                    cell.imageView?.image = image
-                }
-            })
-        }
         return cell
     }
+    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70

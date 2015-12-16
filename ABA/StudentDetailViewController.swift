@@ -8,12 +8,12 @@
 
 import UIKit
 
-class StudentDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class StudentDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
     var selectedStudent: Student?
-    var programsForSelectedStudent: [Program] = [Program(studentIdentifier: "A", name: "Archaeology", domain: "Ancient History", antecedent: "A", longTermObjective: "A"), Program(studentIdentifier: "B", name: "Biology", domain: "Biological Sciences", antecedent: "B", longTermObjective: "B"), Program(studentIdentifier: "C", name: "Chaucer", domain: "Classic Lit", antecedent: "C", longTermObjective: "C")]
-    var behaviorsForSelectedStudent: [Behavior] = [Behavior(studentIdentifier: "A", name: "Anger", abbreviation: "A", description: "A", withTime: "A"), Behavior(studentIdentifier: "B", name: "Biting", abbreviation: "B", description: "B", withTime: "B"), Behavior(studentIdentifier: "C", name: "Crying", abbreviation: "C", description: "C", withTime: "C")]
+    var programsForSelectedStudent: [Program] = []
+    var behaviorsForSelectedStudent: [Behavior] = []
     var mode: Int {
         get {
             return modeSegmentedControl.selectedSegmentIndex
@@ -54,12 +54,32 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
                     }
                 }
             }
-            self.checkForUpdates()
+            if let student = self.selectedStudent {
+                self.studentNameTextField.text = student.name
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (_) -> Void in
             self.navigationController?.popToRootViewControllerAnimated(true)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func photoChoiceAlertForImagePicker(imagePicker: UIImagePickerController) {
+        let photoChoiceAlert = UIAlertController(title: "Select Photo Option", message: nil, preferredStyle: .ActionSheet)
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            photoChoiceAlert.addAction(UIAlertAction(title: "Photo Library", style: .Default, handler: { (_) -> Void in
+                imagePicker.sourceType = .PhotoLibrary
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            photoChoiceAlert.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { (_) -> Void in
+                imagePicker.sourceType = .Camera
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        photoChoiceAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(photoChoiceAlert, animated: true, completion: nil)
     }
     
     // MARK: Methods
@@ -70,9 +90,11 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
                 self.parentEmailTextField.text = parentEmail
             }
             if let imageEndpoint = student.imageEndpoint {
-                self.imageButton.titleLabel?.text = ""
                 ImageController.imageForIdentifier(imageEndpoint, completion: { (image) -> Void in
-                    self.imageButton.imageView?.image = image
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.imageButton.setBackgroundImage(image, forState: .Normal)
+                        self.imageButton.setTitle("", forState: .Normal)
+                    })
                 })
             }
             ProgramController.programsForStudent(student, completion: { (programs) -> Void in
@@ -94,6 +116,20 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    func saveStudent() {
+        if let student = selectedStudent {
+            if let name = studentNameTextField.text {
+                if studentNameTextField.text != "" {
+                    StudentController.updateStudent(student, name: name, parentEmail: parentEmailTextField.text, completion: { (student) -> Void in
+                        if let student = student {
+                            self.selectedStudent = student
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
 
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -108,8 +144,6 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidAppear(true)
         self.checkForUpdates()
     }
-    
-    
 
     // MARK: UI Actions
     @IBAction func modeChanged(sender: UISegmentedControl) {
@@ -122,10 +156,19 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func addPhotoButtonTapped(sender: UIButton) {
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        photoChoiceAlertForImagePicker(imagePicker)
     }
     
+    @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
+        saveStudent()
+    }
     
+    @IBAction func addButtonTapped(sender: UIButton) {
+    }
+    
+    // MARK: UISearchBarDelegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isFiltered = false
@@ -135,6 +178,32 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
             filteredBehaviors = behaviorsForSelectedStudent.filter(({$0.name.lowercaseString.containsString(searchText)}))
         }
         self.tableView.reloadData()
+    }
+    
+    
+    
+    // MARK: UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        if let student = self.selectedStudent {
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                StudentController.addImageForStudent(student, image: image) { (student) -> Void in
+                    if let student = student {
+                        self.selectedStudent = student
+                        if let imageEndpoint = student.imageEndpoint {
+                            ImageController.imageForIdentifier(imageEndpoint, completion: { (image) -> Void in
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.imageButton.setBackgroundImage(image, forState: .Normal)
+                                    self.imageButton.setTitle("", forState: .Normal)
+                                })
+                            })
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     // MARK: TableView Data Source & TableView Delegate

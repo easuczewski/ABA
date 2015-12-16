@@ -71,6 +71,9 @@ class StudentController {
     }
     
     static func addImageForStudent(student: Student, image: UIImage, completion: (student: Student?) -> Void) {
+        if let identifier = student.imageEndpoint {
+            ImageController.deleteImageWithIdentifier(identifier)
+        }
         ImageController.uploadImage(image, completion: { (identifier) -> Void in
             if let imageEndpoint = identifier {
                 if student.identifier != nil {
@@ -91,6 +94,9 @@ class StudentController {
     
     //Delete
     static func deleteStudent(student: Student) {
+        if let identifier = student.imageEndpoint {
+            ImageController.deleteImageWithIdentifier(identifier)
+        }
         if let imageEndpoint = student.imageEndpoint {
             let endpointBase = FirebaseController.base.childByAppendingPath("images/\(imageEndpoint)")
             endpointBase.removeValue()
