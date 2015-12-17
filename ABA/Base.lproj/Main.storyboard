@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -680,23 +679,23 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DYM-rW-1xA" userLabel="Student Text Stack">
                                         <rect key="frame" x="118" y="0.0" width="462" height="110"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="student name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-Dz-spc">
-                                                <rect key="frame" x="0.0" y="0.0" width="462" height="31.5"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="student name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-Dz-spc">
+                                                <rect key="frame" x="0.0" y="0.0" width="462" height="32"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="parent e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-tU-TRn">
-                                                <rect key="frame" x="0.0" y="39.5" width="462" height="31"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="parent e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-tU-TRn">
+                                                <rect key="frame" x="0.0" y="40" width="462" height="31"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="A5T-OV-7xb" userLabel="Table Control Stack">
-                                                <rect key="frame" x="0.0" y="78.5" width="462" height="31.5"/>
+                                                <rect key="frame" x="0.0" y="79" width="462" height="32"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qdo-MY-AaM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="462" height="32.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="462" height="33"/>
                                                         <animations/>
                                                         <segments>
                                                             <segment title="Programs"/>
@@ -762,9 +761,6 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF9-rW-igK">
                                 <rect key="frame" x="540" y="192" width="50" height="50"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="RF9-rW-igK" secondAttribute="height" multiplier="1:1" id="ujI-Vz-pbB"/>
-                                </constraints>
                                 <state key="normal" image="Plus"/>
                                 <connections>
                                     <action selector="addButtonTapped:" destination="PXj-Ua-10a" eventType="touchUpInside" id="QNp-Rh-rBz"/>
@@ -777,8 +773,8 @@
                             <constraint firstItem="oCM-fv-HaS" firstAttribute="top" secondItem="Cio-L4-gU2" secondAttribute="bottom" constant="8" id="7qc-5S-Kpk"/>
                             <constraint firstItem="ubz-n3-PbS" firstAttribute="top" secondItem="spX-sW-ZGs" secondAttribute="bottom" id="EiZ-PQ-pa7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RF9-rW-igK" secondAttribute="trailing" constant="-10" id="HHa-08-lNk"/>
+                            <constraint firstItem="RF9-rW-igK" firstAttribute="top" secondItem="Cio-L4-gU2" secondAttribute="bottom" constant="8" id="LSe-AE-sW2"/>
                             <constraint firstItem="spX-sW-ZGs" firstAttribute="top" secondItem="oCM-fv-HaS" secondAttribute="bottom" id="MEh-8O-JlD"/>
-                            <constraint firstItem="RF9-rW-igK" firstAttribute="height" secondItem="oCM-fv-HaS" secondAttribute="height" id="PQl-CF-DfK"/>
                             <constraint firstItem="oCM-fv-HaS" firstAttribute="leading" secondItem="omc-57-ZJ2" secondAttribute="leadingMargin" constant="-10" id="UmE-tP-nCU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cio-L4-gU2" secondAttribute="trailing" constant="-10" id="aHa-6K-hkI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="spX-sW-ZGs" secondAttribute="trailing" constant="-10" id="aUd-QO-v5X"/>
@@ -804,8 +800,8 @@
                         <outlet property="searchDisplayController" destination="blt-Ln-nDL" id="su5-3H-stu"/>
                         <outlet property="studentNameTextField" destination="ryd-Dz-spc" id="KYY-P7-8kx"/>
                         <outlet property="tableView" destination="spX-sW-ZGs" id="1H5-NF-w7P"/>
-                        <segue destination="YII-1M-9q3" kind="show" identifier="addProgram" id="jmW-5E-rJx"/>
-                        <segue destination="6J6-SR-jAt" kind="show" identifier="addBehavior" id="Iqq-m0-ABM"/>
+                        <segue destination="YII-1M-9q3" kind="show" identifier="toProgram" id="jmW-5E-rJx"/>
+                        <segue destination="6J6-SR-jAt" kind="show" identifier="toBehavior" id="Iqq-m0-ABM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxM-ON-1JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -864,12 +860,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Program" id="SZi-nh-yXP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="PU0-mC-Mf9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="PU0-mC-Mf9">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="YII-1M-9q3" id="Smq-cQ-cGp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="SY5-ZG-zig" id="g4x-XI-Sam"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19r-tL-XNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850" y="3778"/>
+            <point key="canvasLocation" x="-851" y="3823"/>
         </scene>
         <!--Behavior-->
         <scene sceneID="iH6-xE-5L2">
@@ -891,7 +894,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sV-DZ-KeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="3778"/>
+            <point key="canvasLocation" x="-213" y="3823"/>
         </scene>
     </scenes>
     <resources>

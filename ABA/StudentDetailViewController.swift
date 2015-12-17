@@ -116,20 +116,6 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func saveStudent() {
-        if let student = selectedStudent {
-            if let name = studentNameTextField.text {
-                if studentNameTextField.text != "" {
-                    StudentController.updateStudent(student, name: name, parentEmail: parentEmailTextField.text, completion: { (student) -> Void in
-                        if let student = student {
-                            self.selectedStudent = student
-                        }
-                    })
-                }
-            }
-        }
-    }
-    
 
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -162,14 +148,24 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        saveStudent()
+        if let student = selectedStudent {
+            if let name = studentNameTextField.text {
+                if studentNameTextField.text != "" {
+                    StudentController.updateStudent(student, name: name, parentEmail: parentEmailTextField.text, completion: { (student) -> Void in
+                        if let student = student {
+                            self.selectedStudent = student
+                        }
+                    })
+                }
+            }
+        }
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
         if mode == 0 {
-            self.performSegueWithIdentifier("addProgram", sender: nil)
+            self.performSegueWithIdentifier("toProgram", sender: nil)
         } else if mode == 1 {
-            self.performSegueWithIdentifier("addBehavior", sender: nil)
+            self.performSegueWithIdentifier("toBehavior", sender: nil)
         }
     }
     
@@ -179,8 +175,8 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
             isFiltered = false
         } else {
             isFiltered = true
-            filteredPrograms = programsForSelectedStudent.filter(({($0.name.lowercaseString.containsString(searchText))||($0.domain.lowercaseString.containsString(searchText))}))
-            filteredBehaviors = behaviorsForSelectedStudent.filter(({$0.name.lowercaseString.containsString(searchText)}))
+            filteredPrograms = programsForSelectedStudent.filter(({($0.name.lowercaseString.containsString(searchText))||($0.domain.lowercaseString.containsString(searchText.lowercaseString))}))
+            filteredBehaviors = behaviorsForSelectedStudent.filter(({$0.name.lowercaseString.containsString(searchText.lowercaseString)}))
         }
         self.tableView.reloadData()
     }
@@ -248,6 +244,31 @@ class StudentDetailViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if mode == 0 {
+            performSegueWithIdentifier("toProgram", sender: indexPath)
+        } else {
+            performSegueWithIdentifier("toBehavior", sender: indexPath)
+        }
+    }
+    
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toProgram" {
+            if let programDetailViewController = segue.destinationViewController as?ProgramDetailViewController {
+                programDetailViewController.selectedStudent = self.selectedStudent
+                if let indexPath = sender as? NSIndexPath {
+                    if isFiltered == true {
+                        programDetailViewController.selectedProgram = self.filteredPrograms[indexPath.row]
+                    } else {
+                        programDetailViewController.selectedProgram = self.programsForSelectedStudent[indexPath.row]
+                    }
+                    
+                }
+            }
+        }
     }
 
 
