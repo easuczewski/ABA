@@ -49,6 +49,8 @@
 		0202822C1C2086DF004726E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822B1C2086DF004726E1 /* Security.framework */; };
 		0202822E1C2086E4004726E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0202822D1C2086E4004726E1 /* CFNetwork.framework */; };
 		020282301C208C16004726E1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0202822F1C208C16004726E1 /* SignInViewController.swift */; };
+		02C084051C2270B9007EF3F5 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C084041C2270B9007EF3F5 /* TextFieldCell.swift */; };
+		02C084071C2270D9007EF3F5 /* TextFieldWithDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C084061C2270D9007EF3F5 /* TextFieldWithDetailCell.swift */; };
 		02D34FC11C212B6F00D2EA4F /* BehaviorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,8 @@
 		0202822B1C2086DF004726E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0202822D1C2086E4004726E1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0202822F1C208C16004726E1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		02C084041C2270B9007EF3F5 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		02C084061C2270D9007EF3F5 /* TextFieldWithDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithDetailCell.swift; sourceTree = "<group>"; };
 		02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +212,8 @@
 				0202820D1C2083C8004726E1 /* SelectStudentViewController.swift */,
 				0202820F1C2083D7004726E1 /* StudentDetailViewController.swift */,
 				020282111C2083E3004726E1 /* ProgramDetailViewController.swift */,
+				02C084041C2270B9007EF3F5 /* TextFieldCell.swift */,
+				02C084061C2270D9007EF3F5 /* TextFieldWithDetailCell.swift */,
 				02D34FC01C212B6F00D2EA4F /* BehaviorDetailViewController.swift */,
 				020282131C2083F7004726E1 /* WorkspaceViewController.swift */,
 				020282151C208403004726E1 /* SelectDataViewController.swift */,
@@ -330,6 +336,8 @@
 				0202821A1C208540004726E1 /* BehaviorTacticController.swift in Sources */,
 				020281F91C2082F7004726E1 /* UserController.swift in Sources */,
 				020281FB1C208304004726E1 /* StudentController.swift in Sources */,
+				02C084051C2270B9007EF3F5 /* TextFieldCell.swift in Sources */,
+				02C084071C2270D9007EF3F5 /* TextFieldWithDetailCell.swift in Sources */,
 				020281E21C207FC3004726E1 /* Student.swift in Sources */,
 				0202821C1C20854C004726E1 /* BehaviorObjective.swift in Sources */,
 				020281F51C2082E3004726E1 /* FirebaseController.swift in Sources */,

@@ -16,7 +16,13 @@ extension NSDate: Comparable {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .LongStyle
         dateFormatter.timeStyle = .LongStyle
-        
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func shortStringValue() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .ShortStyle
         return dateFormatter.stringFromDate(self)
     }
 }

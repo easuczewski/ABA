@@ -833,15 +833,67 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="programDetailCell" id="SH3-cR-JsX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textFieldCell" id="SH3-cR-JsX" customClass="TextFieldCell" customModule="ABA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SH3-cR-JsX" id="ryA-FV-gfh">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YpK-zx-Qke">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="YpK-zx-Qke" secondAttribute="leading" id="Iov-Zz-YGv"/>
+                                                <constraint firstItem="YpK-zx-Qke" firstAttribute="centerY" secondItem="ryA-FV-gfh" secondAttribute="centerY" id="Lc1-7a-AWD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YpK-zx-Qke" secondAttribute="trailing" id="kXk-sT-TCV"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="textField" destination="YpK-zx-Qke" id="hWK-OW-0rq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textFieldWithDetailCell" id="JJn-qH-BbQ" customClass="TextFieldWithDetailCell" customModule="ABA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JJn-qH-BbQ" id="MUt-6O-wDL">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNE-sa-t2P">
+                                                    <rect key="frame" x="8" y="7" width="536.5" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-7D-Xpl">
+                                                    <rect key="frame" x="554.5" y="12.5" width="37.5" height="18"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="tNE-sa-t2P" secondAttribute="leading" id="CqE-TH-mXs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vqV-7D-Xpl" secondAttribute="trailing" id="IfQ-LT-WD3"/>
+                                                <constraint firstItem="vqV-7D-Xpl" firstAttribute="leading" secondItem="tNE-sa-t2P" secondAttribute="trailing" constant="10" id="dQ8-GD-367"/>
+                                                <constraint firstItem="vqV-7D-Xpl" firstAttribute="centerY" secondItem="MUt-6O-wDL" secondAttribute="centerY" id="eSc-24-oY8"/>
+                                                <constraint firstItem="tNE-sa-t2P" firstAttribute="centerY" secondItem="MUt-6O-wDL" secondAttribute="centerY" id="mkf-0A-Rr0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="detailLabel" destination="vqV-7D-Xpl" id="cP7-20-kxU"/>
+                                            <outlet property="textField" destination="tNE-sa-t2P" id="H3D-f6-LMc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

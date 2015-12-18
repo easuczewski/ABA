@@ -71,6 +71,23 @@ class ProgramShortTermObjectiveController {
         }
     }
     
+    static func completionDateStringForProgramShortTermObjective(programShortTermObjective: ProgramShortTermObjective, completion: (dateString: String) -> Void) {
+        if let identifier = programShortTermObjective.programSessionIdentifier {
+            ProgramSessionController.programSessionWithIdentifier(identifier, completion: { (programSession) -> Void in
+                if let programSession = programSession {
+                    let dateString = programSession.sessionTimestamp.shortStringValue()
+                    completion(dateString: dateString)
+                } else {
+                    completion(dateString: "incomplete")
+                }
+            })
+        } else {
+            completion(dateString: "incomplete")
+        }
+    }
+
+   
+    
     //Update
     static func updateProgramShortTermObjective(programShortTermObjective: ProgramShortTermObjective, name: String, completion: (programShortTermObjective: ProgramShortTermObjective?) -> Void) {
         if let identifier = programShortTermObjective.identifier {

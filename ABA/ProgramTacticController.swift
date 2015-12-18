@@ -88,6 +88,31 @@ class ProgramTacticController {
         }
     }
     
+    static func startStopDateStringForProgramTactic(programTactic: ProgramTactic, completion: (dateString: String) -> Void) {
+        if let startIdentifier = programTactic.startProgramSessionIdentifier {
+            // BREAK THIS DOWN INTO A SINGLE CALL FOR BOTH PROGRAM SESSIONS AND 
+            ProgramSessionController.programSessionWithIdentifier(startIdentifier, completion: { (programSession) -> Void in
+                if let startProgramSession = programSession {
+                    if let endIdentifier = programTactic.endProgramSessionIdentifier {
+                        ProgramSessionController.programSessionWithIdentifier(endIdentifier, completion: { (programSession) -> Void in
+                            if let endProgramSession = programSession {
+                                completion(dateString: "\(startProgramSession.sessionTimestamp.shortStringValue())- \(endProgramSession.sessionTimestamp.shortStringValue())")
+                            } else {
+                                completion(dateString: "\(startProgramSession.sessionTimestamp.shortStringValue())-")
+                            }
+                        })
+                    } else {
+                        completion(dateString: "\(startProgramSession.sessionTimestamp.shortStringValue())-")
+                    }
+                } else {
+                    completion(dateString: "not started")
+                }
+            })
+        } else {
+            completion(dateString: "not started")
+        }
+    }
+    
     //Update
     static func updateProgramTactic(programTactic: ProgramTactic, name: String, completion: (programTactic: ProgramTactic?) -> Void) {
         if let identifier = programTactic.identifier {

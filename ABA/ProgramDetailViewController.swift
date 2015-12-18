@@ -18,10 +18,6 @@ class ProgramDetailViewController: UIViewController, UITableViewDataSource, UITa
     var tacticsForSelectedProgram: [ProgramTactic] = []
     var sectionTitleArray: [String] = ["Program", "Domain", "Antecedent", "LTO - swipe to complete", "STO - swipe to complete", "Tactics - swipe to begin or end"]
     var defaultCellTitleArray: [String] = ["Tap to add program name", "Tap to add domain", "Tap to add antecedent", "Tap to add long-term objective", "Tap to add a short-term objective", "Tap to add a tactic"]
-    var nameForSelectedProgram: String?
-    var domainForSelectedProgram: String?
-    var antecedentForSelectedProgram: String?
-    var longTermObjectiveForSelectedProgram: String?
     
     // MARK: UIOutlets
     @IBOutlet weak var tableView: UITableView!
@@ -43,11 +39,6 @@ class ProgramDetailViewController: UIViewController, UITableViewDataSource, UITa
                     self.tacticsForSelectedProgram = tactics
                 }
             })
-            nameForSelectedProgram = program.name
-            domainForSelectedProgram = program.domain
-            antecedentForSelectedProgram = program.antecedent
-            longTermObjectiveForSelectedProgram = program.longTermObjective
-            
         }
     
     }
@@ -55,19 +46,6 @@ class ProgramDetailViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: UIActions
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
-        if let student = selectedStudent {
-            if let name = self.nameForSelectedProgram {
-                if let domain = self.domainForSelectedProgram {
-                    if let antecedent = self.antecedentForSelectedProgram {
-                        if let longTermObjective = self.longTermObjectiveForSelectedProgram {
-                            ProgramController.updateProgram(<#T##program: Program##Program#>, name: <#T##String#>, domain: <#T##String#>, antecedent: <#T##String#>, longTermObjective: <#T##String#>, completion: <#T##(program: Program?) -> Void#>)
-                            
-                        }
-                    }
-                }
-                
-            }
-        }
     }
     
     
@@ -99,31 +77,41 @@ class ProgramDetailViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("programDetailCell", forIndexPath: indexPath)
+        let textFieldCell = tableView.dequeueReusableCellWithIdentifier("textFieldCell", forIndexPath: indexPath) as! TextFieldCell
+        let textFieldWithDetailCell = tableView.dequeueReusableCellWithIdentifier("textFieldWithDetailCell", forIndexPath: indexPath) as! TextFieldWithDetailCell
         if let program = selectedProgram {
             let programCellTitleArray: [String] = [program.name, program.domain, program.antecedent, program.longTermObjective]
             if indexPath.section <= 3 {
-                cell.textLabel?.text = programCellTitleArray[indexPath.section]
+                textFieldCell.updateWithText(programCellTitleArray[indexPath.section])
+                return textFieldCell
             } else if indexPath.section == 4 {
                 if shortTermObjectivesForSelectedProgram.count == 0 {
-                    cell.textLabel?.text = self.defaultCellTitleArray[indexPath.section]
+                    textFieldWithDetailCell.updateWithText(self.defaultCellTitleArray[indexPath.section], detail: "")
                 } else {
-                    cell.textLabel?.text = shortTermObjectivesForSelectedProgram[indexPath.row].name
+                    let shortTermObjective: ProgramShortTermObjective = shortTermObjectivesForSelectedProgram[indexPath.row]
+                    ProgramShortTermObjectiveController.completionDateStringForProgramShortTermObjective(shortTermObjective, completion: { (dateString) -> Void in
+                        textFieldWithDetailCell.updateWithText(shortTermObjective.name, detail: dateString)
+                    })
                 }
-            } else if indexPath.section == 4 {
+                return textFieldWithDetailCell
+            } else if indexPath.section == 5 {
                 if tacticsForSelectedProgram.count == 0 {
-                    cell.textLabel?.text = self.defaultCellTitleArray[indexPath.section]
+                    textFieldWithDetailCell.updateWithText(self.defaultCellTitleArray[indexPath.section], detail: "")
                 } else {
-                    cell.textLabel?.text = tacticsForSelectedProgram[indexPath.row].name
+                    let tactic: ProgramTactic = tacticsForSelectedProgram[indexPath.row]
+                    ProgramTacticController.startStopDateStringForProgramTactic(tactic, completion: { (dateString) -> Void in
+                        textFieldWithDetailCell.updateWithText(tactic.name, detail: dateString)
+                    })
                 }
+                return textFieldWithDetailCell
+            } else {
+                return textFieldCell
             }
         } else {
-            cell.textLabel?.text = self.defaultCellTitleArray[indexPath.section]
+            return textFieldCell
         }
-    
-        return cell
     }
-    
+                
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerFrame: CGRect = tableView.frame
         let headerView: UIView = UIView(frame: CGRectMake(0, 0, headerFrame.size.width, headerFrame.size.height))
@@ -150,9 +138,6 @@ class ProgramDetailViewController: UIViewController, UITableViewDataSource, UITa
         return headerView
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
         
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 27
